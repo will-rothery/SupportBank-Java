@@ -1,14 +1,13 @@
 package training.supportbank;
 
-public class account {
-    
+public class Account { 
+      
     private String name;
     private double balance;
 
-
-    public account(String name, double balance) {
+	public Account(String name) {
         this.name = name;
-        this.balance = balance;
+        this.balance = 0.0;
     }
 
     public String getName(){
@@ -16,6 +15,6 @@ public class account {
     }
 
     public double getBalance(){
-        return balance;
+         return balance;
     }
 }

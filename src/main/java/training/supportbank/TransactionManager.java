@@ -25,9 +25,7 @@ public class TransactionManager {
             while (row != null) {
                 String[] attributes = ((String) row).split(",");
                 Transaction transaction = new Transaction(attributes[0], attributes[1], attributes[2], attributes[3], Double.parseDouble(attributes[4])); 
-                row = csvReader.readLine();
-                // insert a function to passs the transaction into the array
-                
+                row = csvReader.readLine();                
                 lotsOfNames.add(attributes[1]);
                 lotsOfNames.add(attributes[2]);
             }         
@@ -37,10 +35,11 @@ public class TransactionManager {
                 } 
             }
             Collections.sort(accountName);
+            // System.out.println(accountName);
             
-            System.out.println(accountName);
-            //return newList; 
-            
+            for (String name : accountName) {
+                Account newAccount = new Account(name);
+            }  
         } 
         catch (IOException e1) {
             e1.printStackTrace();
