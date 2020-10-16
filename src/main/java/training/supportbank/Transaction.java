@@ -1,6 +1,8 @@
 package training.supportbank;
 
 public class Transaction {
+
+    // getters and setters for transactions
     private String date;
     private String personFrom;
     private String personTo;
@@ -12,11 +14,13 @@ public class Transaction {
 		this.personFrom = personFrom;
 		this.personTo = personTo;
 		this.narrative = narrative;
-		this.amount = amount;
-	}
+		Transaction.amount = amount;
+    }
+    
     public String getDate() {
         return date;
     }
+
     public void setDate(String date) {
         this.date = date;
     }
@@ -24,6 +28,7 @@ public class Transaction {
     public String getPersonFrom() {
         return personFrom;
     }
+
     public void setPersonFrom(String personFrom) {
         this.personFrom = personFrom;
     } 
@@ -31,6 +36,7 @@ public class Transaction {
     public String getPersonTo() {
         return personTo;
     }
+
     public void setPersonTo(String personTo){
         this.personTo = personTo;
     }
@@ -38,6 +44,7 @@ public class Transaction {
     public String getNarrative() {
         return narrative;
     }
+
     public void setNarrative(String narrative){
         this.narrative = narrative;
     }
@@ -45,7 +52,8 @@ public class Transaction {
     public double getAmount() {
         return amount;
     }
+
     public void setAmount(double amount){
-        this.amount = amount;
+        Transaction.amount = amount;
     }
 } 

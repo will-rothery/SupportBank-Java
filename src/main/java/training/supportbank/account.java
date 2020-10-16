@@ -1,7 +1,8 @@
 package training.supportbank;
 
 public class Account { 
-      
+    
+    // getters and setters for accounts
     private String name;
     private double balance;
 
@@ -13,6 +14,7 @@ public class Account {
 	public String getName(){
         return name;
     }
+
     public void setName(String name){
         this.name = name;
     }
@@ -20,6 +22,7 @@ public class Account {
     public double getBalance(){
         return balance;
     }
+
     public void setBalance(double balance){
         this.balance = balance;
     }    

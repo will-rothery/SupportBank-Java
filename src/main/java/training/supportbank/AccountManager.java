@@ -3,12 +3,12 @@ package training.supportbank;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
 
-
 public class AccountManager {
 
     public ArrayList<Account> accountList = new ArrayList<Account>();
     private static DecimalFormat df = new DecimalFormat("0.00");
 
+    // creates accounts avoiding duplicates and sets initial balance
     public void createAccount(String name) {
         if (!checkAccounts(name)) {
             Account newAccount = new Account(name, 0.0);
@@ -16,10 +16,12 @@ public class AccountManager {
         } 
     }
 
+    // stores accounts
     public void storeAccounts(Account newAccount) {
         accountList.add(newAccount);
     }
 
+    // checks account list for duplicates
     public boolean checkAccounts(String name) {
         for (Account currentAccount : accountList) {
             String currentAccountName = currentAccount.getName();
@@ -29,6 +31,8 @@ public class AccountManager {
         }
         return false;
     }
+
+    // prints accounts
     public void printAllAccounts() {
         for (Account currentAccount : accountList){
             double preciseBalance = currentAccount.getBalance();
@@ -37,6 +41,7 @@ public class AccountManager {
         }
     }
 
+    // gets account from list by name
 	public Account getAccount(String name) {
         for (Account currentAccount : accountList){
             String currentAccountName = currentAccount.getName();
@@ -46,5 +51,4 @@ public class AccountManager {
         }
     return null;
 	}
-    
 }

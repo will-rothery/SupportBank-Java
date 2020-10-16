@@ -49,9 +49,10 @@ public class TransactionManager {
                 accountFrom.setBalance(accountFrom.getBalance() - amount);
                 accountTo.setBalance(accountTo.getBalance() + amount);
             }
-
+            csvReader.close();
+            
             // prints all account name and balance
-            // accountManager.printAllAccounts();          
+            accountManager.printAllAccounts();          
         }  
         catch (IOException e1) {
             e1.printStackTrace();
