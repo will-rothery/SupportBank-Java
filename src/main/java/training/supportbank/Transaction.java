@@ -5,9 +5,8 @@ public class Transaction {
     private String personFrom;
     private String personTo;
     private String narrative;
-    private double amount;
-    
-
+    static double amount;
+	    
     public Transaction(String date, String personFrom, String personTo, String narrative, double amount) {
 		this.date = date;
 		this.personFrom = personFrom;

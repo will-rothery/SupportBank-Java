@@ -3,19 +3,17 @@ package training.supportbank;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class TransactionManager {
+    private AccountManager accountManager;
+    
+    public TransactionManager(AccountManager accountManager) {
+        this.accountManager = accountManager;
+	}
 
-    public ArrayList<String> lotsOfNames = new ArrayList<String>(); 
-    public ArrayList<String> accountName = new ArrayList<String>();
-    public ArrayList<String> moneyOut = new ArrayList<String>();
-    // public ArrayList<String> moneyIn = new ArrayList<String>();
-       
-    public void readData() {    
+	public void readData() {    
         String row = "";
-
+        
         try {
 
             // file reader
@@ -28,31 +26,33 @@ public class TransactionManager {
             // reads rest of information
             row = csvReader.readLine();
 
-            // takes data from cells and adds to array (leaving space for balances later (moneyOut.add(attributes[?]);))
+            // takes data from cells and adds to array
             while (row != null) {
                 String[] attributes = ((String) row).split(",");
                 Transaction transaction = new Transaction(attributes[0], attributes[1], attributes[2], attributes[3], Double.parseDouble(attributes[4])); 
-                row = csvReader.readLine();                
-                lotsOfNames.add(attributes[1]);
-                lotsOfNames.add(attributes[2]);
-            
-                }
-            }
-            
-            // removes duplicates from array and sorts it
-            for (String element : lotsOfNames) { 
-                if (!accountName.contains(element)) { 
-                    accountName.add(element); 
-                } 
-            }
-            Collections.sort(accountName);
+                double amount = Double.parseDouble(attributes[4]);
+                row = csvReader.readLine();   
 
-            // calls new account for every name in array
-            for (String name : accountName) {
-                Account newAccount = new Account(name);
-            }  
-        } 
+                // print all transactions
+                System.out.println(transaction.getPersonFrom() + " Pays £" + Double.toString(transaction.getAmount()) + " to " + transaction.getPersonTo() + " for: " + transaction.getNarrative());
+            
+                
+                // creates accounts, avoiding duplicates for all people in list
+                accountManager.createAccount(attributes[1]);
+                accountManager.createAccount(attributes[2]);
 
+                // finds accounts
+                Account accountFrom = accountManager.getAccount(attributes[1]);
+                Account accountTo = accountManager.getAccount(attributes[2]);
+
+                // sets balance for accounts
+                accountFrom.setBalance(accountFrom.getBalance() - amount);
+                accountTo.setBalance(accountTo.getBalance() + amount);
+            }
+
+            // prints all account name and balance
+            // accountManager.printAllAccounts();          
+        }  
         catch (IOException e1) {
             e1.printStackTrace();
         }   

@@ -5,16 +5,22 @@ public class Account {
     private String name;
     private double balance;
 
-	public Account(String name) {
+	public Account(String name, double balance) {
         this.name = name;
         this.balance = 0.0;
     }
 
-    public String getName(){
+	public String getName(){
         return name;
     }
-
-    public double getBalance(){
-         return balance;
+    public void setName(String name){
+        this.name = name;
     }
+    
+    public double getBalance(){
+        return balance;
+    }
+    public void setBalance(double balance){
+        this.balance = balance;
+    }    
 }
