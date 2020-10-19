@@ -1,10 +1,13 @@
 package training.supportbank;
 
-public class Account { 
+import java.util.ArrayList;
+
+public class Account {
     
     // getters and setters for accounts
     private String name;
     private double balance;
+    private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
 
 	public Account(String name, double balance) {
         this.name = name;
@@ -18,7 +21,15 @@ public class Account {
     public void setName(String name){
         this.name = name;
     }
-    
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void addTransactions(Transaction transaction) {
+        this.transactions.add(transaction);
+    }
+
     public double getBalance(){
         return balance;
     }
